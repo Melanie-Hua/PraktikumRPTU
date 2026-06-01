@@ -1,0 +1,43 @@
+So the task is, to give the Pi a direction of where the robot is supposed to go. 
+With that direction, it should check on the lidar whether the area within a certain distance is occupied/if there are any obstacles in the way. 
+
+
+1.  roboterwidth = 60
+    horizontal_buffer = 15
+    vertical_buffer = 20
+    measure_samples = 3
+    measure_interval = 0
+    target_angle = 0
+    following_distance = 200
+    driving_direction = 0 # get from CV group
+2.  if driving_direction == 1: 
+        target_angle = 0
+    elif driving_direction == -1: 
+        target_angle = 180
+    else:
+        print("Please enter valid driving_direction")
+        raisevalueerror
+        return
+    measure_interval = target_angle +/- arctan((roboterwidth + horizontal_buffer)/2 / following_distance - vertical_buffer) 
+    # since the robot is driving forward and the following_distance is therefore vertical to the driving direction, 
+    # the following_distance will be the Ankathete. The Gegenkathete is (roboterwidth + buffer) divided by 2, so we have a triangle with a 90deg angle
+    # this will be used to determine measure measure_interval
+3. then get distances from the angles included. 
+4. the distances should be stored in an array or so for measure_samples = 3 full measure loops
+5. These measurements will be averaged
+    5.1 wrong measurements must be taken out. I will set the measure no result thing = a big number then modulo by big number / measure_samples
+6. and then checked whether any of the measurements are closer to following_distance - buffer2 
+    # buffer2 is so that the person itself wont be seen as obstacle causing the robot to never reach the following_distance
+7. return true or false
+
+
+Specifically, the angle and an interval around it is taken and all points are measured and checked whether there is an obstacle. 
+This angle interval must be calculated using trigonometry, given the width of the robot as a variable, 
+the distance at which the robot should follow the Person as a variable and a buffer area to make sure the robot does not bump against anything 
+If withing that area there is an obstacle, the Pi should publish an interrupt message that will be processed later 
+Everything will be executed by a single function that should either output true or false depending on whethere there is an obstacel or not
+
+After asking the Logistics and Hardware groups, I discovered that the only angle interval the Lidar should check is either 0 degrees 
+in front or 180. The robots width is 60cm, I will take a buffer distance by 15 as a variable too
+
+
