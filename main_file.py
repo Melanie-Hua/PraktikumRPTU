@@ -51,7 +51,18 @@ pipeline1.start(configu)
 # -----------------------------
 # MediaPipe setup
 # -----------------------------
-POSE_CONNECTIONS = mp.solutions.pose.POSE_CONNECTIONS # defines which body parts to connect to a skeleton
+# Some mediapipe builds (Tasks-only) do not expose `mp.solutions`.
+# Try to use it, otherwise fall back to a standard set of pose connections
+try:
+    POSE_CONNECTIONS = mp.solutions.pose.POSE_CONNECTIONS # defines which body parts to connect to a skeleton
+except Exception:
+    # Fallback connections (standard MediaPipe pose connections)
+    POSE_CONNECTIONS = [
+        (0,1),(0,2),(1,3),(2,4),(3,5),(4,6),(5,7),(6,8),(7,9),(8,10),
+        (9,11),(10,12),(11,13),(12,14),(13,15),(14,16),(15,17),(16,18),
+        (17,19),(18,20),(19,21),(20,22),(21,23),(22,24),(23,24),(24,26),
+        (25,27),(26,28),(27,29),(28,30),(29,31),(30,32),(11,12),(23,24)
+    ]
 
 options = PoseLandmarkerOptions(
     base_options=BaseOptions(
