@@ -7,7 +7,7 @@ from mediapipe.tasks.python.core.base_options import BaseOptions
 from mediapipe.tasks.python.vision import (
     PoseLandmarker,
     PoseLandmarkerOptions,
-    RunningMode
+    RunningMode 
 )
 
 # -----------------------------

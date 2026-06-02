@@ -8,7 +8,7 @@ configu = rs.config()
 
 #reference points
 x_o = 0
-y_o = 240
+y_o = 240 
 x_c = 0.0
 y_c = 0.0
 

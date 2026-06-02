@@ -34,7 +34,7 @@ line, = ax.plot([], [], 'r-') # r- means red solid line, line is the variable th
 
 ax.set_xlabel("Frame") #label the x axis
 ax.set_ylabel("Distance (m)") #label the y axis
-ax.set_title("Closest Person Distance")
+ax.set_title("Closest Person Distance") 
 
 
 # -----------------------------

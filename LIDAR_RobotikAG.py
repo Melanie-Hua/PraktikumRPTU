@@ -29,7 +29,7 @@ cv.imshow("LIDAR",blank_image)
 cv.waitKey(1) #waits 1 millisecond for a key event
 
 # Setup the RPLidar
-PORT_NAME = '/dev/ttyUSB0'
+PORT_NAME = '/dev/ttyUSB0' 
 
 
 lidar = RPLidar(None, PORT_NAME, timeout=3) # creates LIDAR object with No motor PWM control pin, port name and serial timeout as waiting time for data

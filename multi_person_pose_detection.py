@@ -8,7 +8,7 @@ from mediapipe.tasks.python.vision import PoseLandmarker, PoseLandmarkerOptions,
 # MediaPipe connection map (for skeleton lines)
 POSE_CONNECTIONS = mp.solutions.pose.POSE_CONNECTIONS
 
-# -----------------------------
+# --------------------------- --
 # Setup Pose Landmarker
 # -----------------------------
 options = PoseLandmarkerOptions(
